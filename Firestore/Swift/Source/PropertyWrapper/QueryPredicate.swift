@@ -25,6 +25,7 @@ import FirebaseFirestore
 ///     let onlyFavourites3: QueryPredicate = .where("isFavourite", isEqualTo: true)
 public enum QueryPredicate {
   case isEqualTo(_ field: String, _ value: Any)
+  case isNotEqualTo(_ field: String, _ value: Any)
 
   case isIn(_ field: String, _ values: [Any])
   case isNotIn(_ field: String, _ values: [Any])
@@ -48,6 +49,10 @@ public enum QueryPredicate {
    */
   public static func whereField(_ field: String, isEqualTo value: Any) -> QueryPredicate {
     .isEqualTo(field, value)
+  }
+
+  public static func whereField(_ field: String, isNotEqualTo value: Any) -> QueryPredicate {
+    .isNotEqualTo(field, value)
   }
 
   public static func whereField(_ field: String, isIn values: [Any]) -> QueryPredicate {
@@ -101,6 +106,10 @@ public enum QueryPredicate {
 
   public static func `where`(_ name: String, isEqualTo value: Any) -> QueryPredicate {
     .isEqualTo(name, value)
+  }
+    
+  public static func `where`(_ name: String, isNotEqualTo value: Any) -> QueryPredicate {
+    .isNotEqualTo(name, value)
   }
 
   public static func `where`(_ name: String, isIn values: [Any]) -> QueryPredicate {

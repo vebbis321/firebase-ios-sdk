@@ -164,6 +164,8 @@ internal class FirestoreQueryObservable<T>: ObservableObject {
         switch predicate {
         case let .isEqualTo(field, value):
           query = query.whereField(field, isEqualTo: value)
+        case let .isNotEqualTo(field, value):
+          query = query.whereField(field, isNotEqualTo: value)
         case let .isIn(field, values):
           query = query.whereField(field, in: values)
         case let .isNotIn(field, values):
